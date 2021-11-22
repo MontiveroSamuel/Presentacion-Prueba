@@ -1,0 +1,10 @@
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\bin\Debug\Presentacion_Prueba.exe.config
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\bin\Debug\Presentacion_Prueba.exe
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\bin\Debug\Presentacion_Prueba.pdb
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.csproj.AssemblyReference.cache
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.Form1.resources
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.Properties.Resources.resources
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.csproj.GenerateResource.cache
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.csproj.CoreCompileInputs.cache
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.exe
+C:\Users\Samuel\Desktop\dev\Presentacion_Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.pdb
