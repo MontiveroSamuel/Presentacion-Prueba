@@ -20,12 +20,14 @@ namespace Presentacion_Prueba
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
+            dGridViewClientes.Show();
+
             //Creacion de String y SqlConnection necesarios para realizar conexion
             string connetionString;
             SqlConnection cnn;
 
             //Dar el punto de entrada al servidor/db al String e instanciar SqlConnection con ese punto de entrada
-            connetionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=DiariosPrueba;Trusted_Connection=True;";
+            connetionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=Autos para 5;Trusted_Connection=True;";
             cnn = new SqlConnection(connetionString);
 
             //Abrir conexion
@@ -42,7 +44,7 @@ namespace Presentacion_Prueba
 
 
             //sql es el string que contiene la consulta
-            sql = "SELECT TOP 5 [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes]";
+            sql = "SELECT * FROM[Autos para 5].[dbo].[Clientes]";
 
             SqlDataAdapter adaptador = new SqlDataAdapter(sql, cnn);
             DataTable dataTable = new DataTable();
@@ -83,26 +85,32 @@ namespace Presentacion_Prueba
 
         private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
+            dGridViewClientes.Show();
             string connetionString, sql;
             SqlConnection cnn;
 
-
             connetionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=DiariosPrueba;Trusted_Connection=True;";
             cnn = new SqlConnection(connetionString);
+                        
+           // SqlCommand command;
 
-            
-
-            SqlCommand command;
-
-            sql = "SELECT [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes] WHERE [ApellidoNombre] like '" +txtBuscador.Text +"%'";
+            sql = "SELECT [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes] WHERE [ApellidoNombre] like '%" +txtBuscador.Text +"%'";
             
             cnn.Open();
-            command = new SqlCommand(sql, cnn);
+
+           // command = new SqlCommand(sql, cnn);
             SqlDataAdapter adaptador = new SqlDataAdapter(sql, cnn);
             DataTable dataTable = new DataTable();
             adaptador.Fill(dataTable);
 
             dGridViewClientes.DataSource = dataTable;
+
+            if (txtBuscador.Text == "")
+            {
+                dGridViewClientes.Hide();
+            }
+
+           // command.Dispose();
             cnn.Close();
 
         }
