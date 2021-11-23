@@ -39,8 +39,16 @@ namespace Presentacion_Prueba
             SqlDataReader dataReader;
             String sql, Output = "";
 
+
+
             //sql es el string que contiene la consulta
             sql = "SELECT TOP 5 [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes]";
+
+            SqlDataAdapter adaptador = new SqlDataAdapter(sql, cnn);
+            DataTable dataTable = new DataTable();
+            adaptador.Fill(dataTable);
+
+            dGridViewClientes.DataSource = dataTable;
 
             //Creamos la instancia nueva del SqlCommand para conectarse a la base de datos y mandar la consulta
             command = new SqlCommand(sql, cnn);
@@ -51,16 +59,52 @@ namespace Presentacion_Prueba
             //Este while sirve para acumular linea por linea los datos de la columna definida en .GetValue(#) en un String
             while (dataReader.Read())
             {
-                Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + " - " + dataReader.GetValue(2) + "\n";
+               // int i = dGridViewClientes.Rows.Add();
+                //Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + " - " + dataReader.GetValue(2) + "\n";
+               // dGridViewClientes.Rows(i).Cells(0).Value = dataReader.GetValue(0);
             }
 
+
             //Crea una ventana con la info almacenada en Output
-            MessageBox.Show(Output);
+            //MessageBox.Show(Output);
 
             //Proocolo de cierre de las acciones -> dataReader, command y cnn
             dataReader.Close();
             command.Dispose();
             cnn.Close();
+        }
+
+        private void PruebaConexion_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'diariosDataSet.Clientes' Puede moverla o quitarla según sea necesario.
+            //this.clientesTableAdapter.Fill(this.diariosDataSet.Clientes);
+
+        }
+
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string connetionString, sql;
+            SqlConnection cnn;
+
+
+            connetionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=DiariosPrueba;Trusted_Connection=True;";
+            cnn = new SqlConnection(connetionString);
+
+            
+
+            SqlCommand command;
+
+            sql = "SELECT [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes] WHERE [ApellidoNombre] like '" +txtBuscador.Text +"%'";
+            
+            cnn.Open();
+            command = new SqlCommand(sql, cnn);
+            SqlDataAdapter adaptador = new SqlDataAdapter(sql, cnn);
+            DataTable dataTable = new DataTable();
+            adaptador.Fill(dataTable);
+
+            dGridViewClientes.DataSource = dataTable;
+            cnn.Close();
+
         }
     }
 }
