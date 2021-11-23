@@ -25,7 +25,7 @@ namespace Presentacion_Prueba
             SqlConnection cnn;
 
             //Dar el punto de entrada al servidor/db al String e instanciar SqlConnection con ese punto de entrada
-            connetionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=DiariosPrueba;Trusted_Connection=True;";
+            connetionString = @"Server=.;Data Source=MAXI\MAX;Initial Catalog=Autos para 5;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             cnn = new SqlConnection(connetionString);
 
             //Abrir conexion
@@ -42,7 +42,7 @@ namespace Presentacion_Prueba
 
 
             //sql es el string que contiene la consulta
-            sql = "SELECT TOP 5 [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes]";
+            sql = "SELECT TOP 5 [Id_Cliente], [Nombre],[Mail] FROM[DiariosPrueba].[dbo].[Clientes]";
 
             SqlDataAdapter adaptador = new SqlDataAdapter(sql, cnn);
             DataTable dataTable = new DataTable();
@@ -87,14 +87,14 @@ namespace Presentacion_Prueba
             SqlConnection cnn;
 
 
-            connetionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=DiariosPrueba;Trusted_Connection=True;";
+            connetionString = @"Server=.;Data Source=MAXI\MAX;Initial Catalog=Autos para 5;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             cnn = new SqlConnection(connetionString);
 
             
 
             SqlCommand command;
 
-            sql = "SELECT [NroCliente], [ApellidoNombre],[Credito] FROM[DiariosPrueba].[dbo].[Clientes] WHERE [ApellidoNombre] like '" +txtBuscador.Text +"%'";
+            sql = "SELECT [Id_Cliente], [Nombre],[Mail] FROM[Autos para 5].[dbo].[Clientes] WHERE [Nombre] like '" +txtBuscador.Text +"%'";
             
             cnn.Open();
             command = new SqlCommand(sql, cnn);
@@ -105,6 +105,12 @@ namespace Presentacion_Prueba
             dGridViewClientes.DataSource = dataTable;
             cnn.Close();
 
+        }
+
+        private void ventasToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Form formulario = new FormVentas();
+            formulario.Show();
         }
     }
 }
