@@ -24,13 +24,13 @@ namespace Presentacion_Prueba
         {
             //Al generar cambios en texto mostrar el cuadro de busqueda y lo lleva al medio
             //dgvBuscaEmpleado.Show();
-           
+
             //Crear aux
             String sqlQuery, connectionString;
             SqlConnection connection;
-            
+
             //Conexion a db
-            connectionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=Autos para 5;Trusted_Connection=True;";
+            connectionString = @"Server=.;Data Source=MAXI\MAX;Initial Catalog=Autos para 5;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             connection = new SqlConnection(connectionString);
 
             //Busqueda de coincidencia
@@ -64,7 +64,8 @@ namespace Presentacion_Prueba
 
         private void CrearEmpleado_Load(object sender, EventArgs e)
         {
-            
+            lblInforme.Text = "";
+
         }
 
         private void dgvBuscaEmpleado_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -87,13 +88,67 @@ namespace Presentacion_Prueba
             SqlConnection connection;
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
-            
-            connectionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=Autos para 5;Trusted_Connection=True;";
+
+            connectionString = @"Server=.;Data Source=MAXI\MAX;Initial Catalog=Autos para 5;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             connection = new SqlConnection(connectionString);
+
+            //Validacion de datos- Telefono-DNI
+            if (string.IsNullOrEmpty(txtDNI.Text))
+            {
+                lblInforme.Text = "No se pude dejar el campo DNI en blanco";
+                return;
+            }
+
+            int datoInt;
+            if (int.TryParse(txtDNI.Text, out datoInt))
+            {
+                if (datoInt < 0)
+                { datoInt = Math.Abs(datoInt); }
+                else if (datoInt >= 0)
+                { txtDNI.Text = datoInt.ToString(); }
+
+                lblInforme.Text = "Se han guardados los datos!";
+
+            }
+            else
+            {
+                lblInforme.Text = "El DNI no puede contener letras";
+                return;
+
+            }
+
+
+            if (int.TryParse(txtTelefono.Text, out datoInt))
+            {
+                if (datoInt < 0)
+                { datoInt = Math.Abs(datoInt); }
+                else if (datoInt >= 0)
+                { txtTelefono.Text = datoInt.ToString(); }
+
+                lblInforme.Text = "Se han guardados los datos!";
+
+            }
+            else
+            {
+                lblInforme.Text = "El teléfono no puede contener letras";
+                return;
+
+            }
+
+
+            if (string.IsNullOrEmpty(txtTelefono.Text))
+            {
+                lblInforme.Text = "No se pude dejar el campo teléfono en blanco";
+            }
+
+
 
             connection.Open();
 
+
             //Actualizacion de direccion en db
+
+
             sqlQueryDireccion = "UPDATE [Ubicacion_Empleados] SET [Direccion] = '" + txtDireccion.Text + "' FROM [Ubicacion_Empleados] JOIN [Empleado] " +
                             "ON [Empleado].[Id_UbicacionEmpleados] = [Ubicacion_Empleados].[Id_UbicacionEmpleados] WHERE [Id_Empleado] = '" + dgvBuscaEmpleado.SelectedCells[0].Value.ToString() + "' ";
             command = new SqlCommand(sqlQueryDireccion, connection);
@@ -108,6 +163,8 @@ namespace Presentacion_Prueba
 
             adaptador.UpdateCommand = new SqlCommand(sqlQueryBarrio, connection);
             adaptador.UpdateCommand.ExecuteNonQuery();
+
+
 
 
             //Actualizacion Ciudad en db
@@ -139,7 +196,7 @@ namespace Presentacion_Prueba
 
             //Actualizacion DNI en db
 
-            sqlQueryDirecta = "UPDATE [Empleado] SET [DNI] = '" + txtDNI.Text + "', [Observaciones] = '"+ txtObservaciones.Text + "' FROM [Empleado] " +
+            sqlQueryDirecta = "UPDATE [Empleado] SET [DNI] = '" + txtDNI.Text + "', [Observaciones] = '" + txtObservaciones.Text + "' FROM [Empleado] " +
                 " WHERE [Id_Empleado] = '" + dgvBuscaEmpleado.SelectedCells[0].Value.ToString() + "' ";
             command = new SqlCommand(sqlQueryDirecta, connection);
 
@@ -163,7 +220,7 @@ namespace Presentacion_Prueba
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
 
-            connectionString = @"Server=PC-SAMUEL\SMONTIVERO;Database=Autos para 5;Trusted_Connection=True;";
+            connectionString = @"Server=.;Data Source=MAXI\MAX;Initial Catalog=Autos para 5;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             connection = new SqlConnection(connectionString);
 
             sqlQuery = "UPDATE [Empleado] SET [Id_Estado] = 2 WHERE [Nombre] = '" + dgvBuscaEmpleado.SelectedCells[1].Value.ToString() + "' ";
@@ -182,7 +239,7 @@ namespace Presentacion_Prueba
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             //Limpiar txt
-
+            lblInforme.Text = "";
             txtBarrio.Clear();
             txtDireccion.Clear();
             txtCiudad.Clear();
@@ -193,5 +250,7 @@ namespace Presentacion_Prueba
             txtTelefono.Clear();
             txtBuscador.Clear();
         }
+
     }
 }
+

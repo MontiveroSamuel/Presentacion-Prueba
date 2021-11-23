@@ -56,16 +56,18 @@ namespace Presentacion_Prueba
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblInforme = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaEmpleado)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(95, 20);
+            this.lblTitulo.Location = new System.Drawing.Point(95, 37);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(347, 29);
             this.lblTitulo.TabIndex = 0;
@@ -85,7 +87,7 @@ namespace Presentacion_Prueba
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
             this.pictureBox1.Image = global::Presentacion_Prueba.Properties.Resources.kisspng_the_mp_car_group_car_dealership_vehicle_auto_detai_car_logo_5acc63ad77f7c6_9011992615233443014914;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(77, 59);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -289,10 +291,23 @@ namespace Presentacion_Prueba
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblInforme);
             this.panel1.Location = new System.Drawing.Point(12, 308);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(663, 51);
             this.panel1.TabIndex = 25;
+            // 
+            // lblInforme
+            // 
+            this.lblInforme.AutoSize = true;
+            this.lblInforme.BackColor = System.Drawing.Color.IndianRed;
+            this.lblInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInforme.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblInforme.Location = new System.Drawing.Point(3, 15);
+            this.lblInforme.Name = "lblInforme";
+            this.lblInforme.Size = new System.Drawing.Size(76, 25);
+            this.lblInforme.TabIndex = 0;
+            this.lblInforme.Text = "label1";
             // 
             // CrearEmpleado
             // 
@@ -331,6 +346,8 @@ namespace Presentacion_Prueba
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaEmpleado)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,5 +381,6 @@ namespace Presentacion_Prueba
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblInforme;
     }
 }
