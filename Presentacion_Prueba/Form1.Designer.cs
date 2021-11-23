@@ -72,6 +72,8 @@ namespace Presentacion_Prueba
             this.dGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridViewClientes.Location = new System.Drawing.Point(60, 133);
             this.dGridViewClientes.Name = "dGridViewClientes";
+            this.dGridViewClientes.ReadOnly = true;
+            this.dGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridViewClientes.Size = new System.Drawing.Size(520, 150);
             this.dGridViewClientes.TabIndex = 1;
             // 

@@ -19,3 +19,4 @@ C:\Users\Samuel\Desktop\dev\Presentacion-Prueba\Presentacion_Prueba\bin\Debug\Di
 C:\Users\Samuel\Desktop\dev\Presentacion-Prueba\Presentacion_Prueba\bin\Debug\Presentacion_Prueba.exe.config
 C:\Users\Samuel\Desktop\dev\Presentacion-Prueba\Presentacion_Prueba\bin\Debug\Presentacion_Prueba.exe
 C:\Users\Samuel\Desktop\dev\Presentacion-Prueba\Presentacion_Prueba\bin\Debug\Presentacion_Prueba.pdb
+C:\Users\Samuel\Desktop\dev\Presentacion-Prueba\Presentacion_Prueba\obj\Debug\Presentacion_Prueba.CrearEmpleado.resources

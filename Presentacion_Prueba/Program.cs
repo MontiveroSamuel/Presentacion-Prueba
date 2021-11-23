@@ -16,7 +16,7 @@ namespace Presentacion_Prueba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PruebaConexion());
+            Application.Run(new CrearEmpleado());
         }
     }
 }
