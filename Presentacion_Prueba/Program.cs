@@ -16,7 +16,11 @@ namespace Presentacion_Prueba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< Updated upstream
             Application.Run(new PruebaConexion());
+=======
+            Application.Run(new UpdateEmpleado());
+>>>>>>> Stashed changes
         }
     }
 }
